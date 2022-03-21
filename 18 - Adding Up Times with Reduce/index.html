@@ -182,6 +182,18 @@
     </li>
   </ul>
 <script>
+
+const timeArray = Array.from(document.querySelectorAll("[data-time]"));
+
+const totalSec = timeArray.reduce( (sum, cur) => (sum += (60*Number(cur.dataset.time.split(':')[0])) + Number(cur.dataset.time.split(':')[1])), 0 );
+
+const sec = totalSec % 60;
+const totalMin = ( totalSec - sec ) / 60;
+const min = totalMin % 60;
+const hr = ( totalMin - min ) / 60;
+
+console.log( `${hr}:${min}:${sec}`);
+
 </script>
 </body>
 </html>
